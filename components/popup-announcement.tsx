@@ -14,7 +14,7 @@ interface PopupAnnouncementProps {
 export default function PopupAnnouncement({
   imageUrl,
   altText,
-  duration = 5000, // Mặc định 5 giây
+  duration = 7000, // Mặc định 7 giây
 }: PopupAnnouncementProps) {
   const [isVisible, setIsVisible] = useState(false)
 
