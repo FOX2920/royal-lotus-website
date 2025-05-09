@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Phone, X } from "lucide-react"
+import { Phone, X, Facebook, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function FloatingContact() {
@@ -41,6 +41,22 @@ export default function FloatingContact() {
             >
               <Phone className="h-4 w-4 mr-2" />
               <span>Gọi ngay: 091.121.9966</span>
+            </a>
+            <a
+              href="https://www.facebook.com/daPVC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-full bg-blue-600 text-white py-2 px-4 rounded-md"
+            >
+              <Facebook className="h-4 w-4 mr-2" />
+              <span>Facebook</span>
+            </a>
+            <a
+              href="mailto:royallotusjsc@gmail.com"
+              className="flex items-center justify-center w-full bg-gray-100 text-gray-800 py-2 px-4 rounded-md"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              <span>Email</span>
             </a>
             <a
               href="/contact"
