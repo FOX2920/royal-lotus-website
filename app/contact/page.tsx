@@ -6,7 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MapPin, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Send, Facebook } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -249,6 +249,27 @@ export default function ContactPage() {
                     <p className="mt-2 text-gray-600">
                       <a href="mailto:royallotusjsc@gmail.com" className="hover:text-primary">
                         royallotusjsc@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-md bg-primary text-white">
+                      <Facebook className="h-6 w-6" />
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium text-gray-900">Facebook</h3>
+                    <p className="mt-2 text-gray-600">
+                      <a
+                        href="https://www.facebook.com/daPVC"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary"
+                      >
+                        facebook.com/daPVC
                       </a>
                     </p>
                   </div>
