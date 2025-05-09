@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, CheckCircle, Truck, Factory, Award, Users } from "lucide-react"
+import { ArrowRight, CheckCircle, Truck, Factory, Award, Users, Phone } from "lucide-react"
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
             Cung cấp sỉ lẻ các loại giả da công nghiệp, nguyên phụ liệu cho ngành nội thất ô tô, xe máy, sofa và nội
             thất trong nhà, giày dép, cặp túi balo vali.
           </p>
-          <div className="mt-10 flex justify-center gap-x-6">
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 sm:gap-x-6">
             <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 shadow">
               <Link href="/products">Xem sản phẩm</Link>
             </Button>
@@ -129,7 +129,7 @@ export default function Home() {
 
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Service 1 */}
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
+            <div className="bg-white p-8 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <Factory className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-gray-900">Gia công bồi dán</h3>
               <p className="mt-4 text-gray-600">
@@ -149,10 +149,15 @@ export default function Home() {
                   <span>Đáp ứng mọi yêu cầu kỹ thuật</span>
                 </li>
               </ul>
+              <div className="mt-6">
+                <Link href="/services/manufacturing" className="inline-flex items-center text-primary hover:underline">
+                  Tìm hiểu thêm <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
             </div>
 
             {/* Service 2 */}
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
+            <div className="bg-white p-8 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <Factory className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-gray-900">Xưởng may</h3>
               <p className="mt-4 text-gray-600">
@@ -172,10 +177,15 @@ export default function Home() {
                   <span>Bọc sofa và nội thất</span>
                 </li>
               </ul>
+              <div className="mt-6">
+                <Link href="/services/sewing" className="inline-flex items-center text-primary hover:underline">
+                  Tìm hiểu thêm <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
             </div>
 
             {/* Service 3 */}
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
+            <div className="bg-white p-8 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <Truck className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-gray-900">Đặt hàng theo yêu cầu</h3>
               <p className="mt-4 text-gray-600">
@@ -195,6 +205,11 @@ export default function Home() {
                   <span>Giao hàng đúng tiến độ</span>
                 </li>
               </ul>
+              <div className="mt-6">
+                <Link href="/services/custom" className="inline-flex items-center text-primary hover:underline">
+                  Tìm hiểu thêm <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -212,7 +227,7 @@ export default function Home() {
 
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {/* Feature 1 */}
-            <div className="text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border text-center transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Award className="h-8 w-8 text-primary" />
               </div>
@@ -223,7 +238,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border text-center transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Truck className="h-8 w-8 text-primary" />
               </div>
@@ -232,7 +247,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3 */}
-            <div className="text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border text-center transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Factory className="h-8 w-8 text-primary" />
               </div>
@@ -243,7 +258,7 @@ export default function Home() {
             </div>
 
             {/* Feature 4 */}
-            <div className="text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border text-center transition-all duration-300 hover:shadow-md hover:border-primary/20">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Users className="h-8 w-8 text-primary" />
               </div>
@@ -255,6 +270,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Floating Contact Button - Chỉ hiển thị trên mobile */}
+      <div className="fixed bottom-6 right-6 z-50 lg:hidden">
+        <a
+          href="tel:0911219966"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg"
+          aria-label="Gọi ngay"
+        >
+          <Phone className="h-6 w-6" />
+        </a>
+      </div>
     </div>
   )
 }
