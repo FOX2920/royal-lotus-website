@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowRight, Search, ArrowUpDown, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight, Search, ArrowUpDown, ChevronLeft, ChevronRight, Filter } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { format } from "date-fns"
 import { vi } from "date-fns/locale"
@@ -74,6 +74,7 @@ export default function ProductsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [showFilters, setShowFilters] = useState(false)
   const productsPerPage = itemsPerPage
 
   useEffect(() => {
@@ -177,6 +178,13 @@ export default function ProductsPage() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
+    // Scroll to table on mobile
+    if (window.innerWidth < 768) {
+      const tableElement = document.getElementById("products-table")
+      if (tableElement) {
+        tableElement.scrollIntoView({ behavior: "smooth" })
+      }
+    }
   }
 
   const handleItemsPerPageChange = (value: string) => {
@@ -206,10 +214,11 @@ export default function ProductsPage() {
       {/* Categories */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8">Danh mục sản phẩm</h2>
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <Card key={category.id} className="overflow-hidden transition-all duration-300 product-card">
-                <div className="relative h-64 w-full">
+                <div className="relative h-64 w-full image-hover">
                   <Image src={category.image || "/placeholder.svg"} alt={category.name} fill className="object-cover" />
                 </div>
                 <CardContent className="p-6">
@@ -229,10 +238,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Table Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50" id="products-table">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Danh sách sản phẩm</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Danh sách sản phẩm</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
               Tìm kiếm và xem thông tin chi tiết về các sản phẩm của chúng tôi
             </p>
@@ -249,124 +258,138 @@ export default function ProductsPage() {
               />
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
-              <span className="text-sm text-gray-500">Hiển thị:</span>
-              <Select defaultValue="10" onValueChange={handleItemsPerPageChange}>
-                <SelectTrigger className="w-20">
-                  <SelectValue placeholder="10" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="10">10</SelectItem>
-                  <SelectItem value="20">20</SelectItem>
-                  <SelectItem value="50">50</SelectItem>
-                </SelectContent>
-              </Select>
+              <Button variant="outline" size="icon" className="sm:hidden" onClick={() => setShowFilters(!showFilters)}>
+                <Filter className="h-4 w-4" />
+              </Button>
+              <div className={`flex items-center gap-2 ${showFilters ? "flex" : "hidden"} sm:flex`}>
+                <span className="text-sm text-gray-500">Hiển thị:</span>
+                <Select defaultValue="10" onValueChange={handleItemsPerPageChange}>
+                  <SelectTrigger className="w-20">
+                    <SelectValue placeholder="10" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="10">10</SelectItem>
+                    <SelectItem value="20">20</SelectItem>
+                    <SelectItem value="50">50</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
 
-          <div className="rounded-md border bg-white">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[100px]">
-                    <Button variant="ghost" onClick={() => handleSort("idNhanh")} className="flex items-center">
-                      Mã SP
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                  <TableHead>
-                    <Button variant="ghost" onClick={() => handleSort("name")} className="flex items-center">
-                      Tên sản phẩm
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                  <TableHead className="w-[100px]">
-                    <Button variant="ghost" onClick={() => handleSort("unit")} className="flex items-center">
-                      Đơn vị
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                  <TableHead className="w-[150px]">
-                    <Button variant="ghost" onClick={() => handleSort("updatedAt")} className="flex items-center">
-                      Cập nhật
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                  <TableHead className="text-right w-[100px]">
-                    <Button
-                      variant="ghost"
-                      onClick={() => handleSort("remain")}
-                      className="flex items-center justify-end"
-                    >
-                      Tồn kho
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                  <TableHead className="text-right w-[100px]">
-                    <Button
-                      variant="ghost"
-                      onClick={() => handleSort("available")}
-                      className="flex items-center justify-end"
-                    >
-                      Khả dụng
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {loading ? (
-                  Array.from({ length: 10 }).map((_, index) => (
-                    <TableRow key={index}>
-                      <TableCell>
-                        <Skeleton className="h-6 w-16" />
-                      </TableCell>
-                      <TableCell>
-                        <Skeleton className="h-6 w-full" />
-                      </TableCell>
-                      <TableCell>
-                        <Skeleton className="h-6 w-12" />
-                      </TableCell>
-                      <TableCell>
-                        <Skeleton className="h-6 w-24" />
-                      </TableCell>
-                      <TableCell>
-                        <Skeleton className="h-6 w-16" />
-                      </TableCell>
-                      <TableCell>
-                        <Skeleton className="h-6 w-16" />
-                      </TableCell>
-                    </TableRow>
-                  ))
-                ) : currentProducts.length > 0 ? (
-                  currentProducts.map((product) => (
-                    <TableRow key={product.idNhanh}>
-                      <TableCell className="font-medium">{product.idNhanh}</TableCell>
-                      <TableCell>{product.name}</TableCell>
-                      <TableCell>{product.unit}</TableCell>
-                      <TableCell>{formatDate(product.updatedAt)}</TableCell>
-                      <TableCell className="text-right">{product.inventory?.remain || 0}</TableCell>
-                      <TableCell className="text-right">{product.inventory?.available || 0}</TableCell>
-                    </TableRow>
-                  ))
-                ) : (
+          <div className="rounded-md border bg-white overflow-hidden shadow-sm">
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
                   <TableRow>
-                    <TableCell colSpan={6} className="h-24 text-center">
-                      Không tìm thấy sản phẩm nào
-                    </TableCell>
+                    <TableHead className="w-[100px]">
+                      <Button variant="ghost" onClick={() => handleSort("idNhanh")} className="flex items-center">
+                        Mã SP
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
+                    <TableHead>
+                      <Button variant="ghost" onClick={() => handleSort("name")} className="flex items-center">
+                        Tên sản phẩm
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
+                    <TableHead className="w-[100px]">
+                      <Button variant="ghost" onClick={() => handleSort("unit")} className="flex items-center">
+                        Đơn vị
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
+                    <TableHead className="w-[150px]">
+                      <Button variant="ghost" onClick={() => handleSort("updatedAt")} className="flex items-center">
+                        Cập nhật
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
+                    <TableHead className="text-right w-[100px]">
+                      <Button
+                        variant="ghost"
+                        onClick={() => handleSort("remain")}
+                        className="flex items-center justify-end"
+                      >
+                        Tồn kho
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
+                    <TableHead className="text-right w-[100px]">
+                      <Button
+                        variant="ghost"
+                        onClick={() => handleSort("available")}
+                        className="flex items-center justify-end"
+                      >
+                        Khả dụng
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </TableHead>
                   </TableRow>
-                )}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    Array.from({ length: 10 }).map((_, index) => (
+                      <TableRow key={index}>
+                        <TableCell>
+                          <Skeleton className="h-6 w-16" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-6 w-full" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-6 w-12" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-6 w-24" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-6 w-16" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-6 w-16" />
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : currentProducts.length > 0 ? (
+                    currentProducts.map((product) => (
+                      <TableRow key={product.idNhanh} className="hover:bg-gray-50">
+                        <TableCell className="font-medium">{product.idNhanh}</TableCell>
+                        <TableCell>
+                          <Link
+                            href={`/products/detail/${product.idNhanh}`}
+                            className="hover:text-primary hover:underline"
+                          >
+                            {product.name}
+                          </Link>
+                        </TableCell>
+                        <TableCell>{product.unit}</TableCell>
+                        <TableCell>{formatDate(product.updatedAt)}</TableCell>
+                        <TableCell className="text-right">{product.inventory?.remain || 0}</TableCell>
+                        <TableCell className="text-right">{product.inventory?.available || 0}</TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={6} className="h-24 text-center">
+                        Không tìm thấy sản phẩm nào
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </div>
           </div>
 
           {/* Pagination */}
           {!loading && calculatedTotalPages > 1 && (
-            <div className="flex items-center justify-between mt-6">
-              <div className="text-sm text-gray-500">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-6 gap-4">
+              <div className="text-sm text-gray-500 order-2 sm:order-1 text-center sm:text-left">
                 Hiển thị {indexOfFirstProduct + 1}-{Math.min(indexOfLastProduct, sortedProducts.length)} trong số{" "}
                 {sortedProducts.length} sản phẩm
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center space-x-2 order-1 sm:order-2">
                 <Button
                   variant="outline"
                   size="icon"
@@ -412,8 +435,8 @@ export default function ProductsPage() {
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Kho nguyên liệu đa dạng</h2>
+            <div className="animate-slide-up">
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Kho nguyên liệu đa dạng</h2>
               <p className="mt-4 text-lg text-gray-600">
                 Chúng tôi cung cấp đa dạng các loại giả da với nhiều màu sắc, họa tiết và chất liệu khác nhau, đáp ứng
                 mọi nhu cầu của khách hàng.
@@ -460,8 +483,8 @@ export default function ProductsPage() {
                 </div>
               </div>
             </div>
-            <div className="mt-10 lg:mt-0">
-              <div className="relative h-96 rounded-lg overflow-hidden">
+            <div className="mt-10 lg:mt-0 animate-slide-up">
+              <div className="relative h-96 rounded-lg overflow-hidden shadow-md image-hover">
                 <Image src="/images/leather-materials.png" alt="Kho nguyên liệu" fill className="object-cover" />
               </div>
             </div>
