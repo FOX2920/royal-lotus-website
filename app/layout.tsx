@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import FloatingContact from "@/components/floating-contact"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
   title: "Royal Lotus - Nhà cung cấp giả da công nghiệp hàng đầu",
   description:
     "Cung cấp sỉ lẻ các loại giả da công nghiệp, nguyên phụ liệu cho ngành nội thất ô tô, xe máy, sofa và nội thất trong nhà, giày dép, cặp túi balo vali.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,6 +28,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <FloatingContact />
           </div>
         </ThemeProvider>
       </body>
