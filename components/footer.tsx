@@ -16,45 +16,69 @@ export default function Footer() {
               thất trong nhà, giày dép, cặp túi balo vali.
             </p>
             <div className="mt-6 flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-primary hover:text-white"
+              >
                 <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
+                <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-primary hover:text-white"
+              >
                 <span className="sr-only">Instagram</span>
-                <Instagram className="h-6 w-6" />
+                <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-primary hover:text-white"
+              >
                 <span className="sr-only">YouTube</span>
-                <Youtube className="h-6 w-6" />
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">Sản phẩm</h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/products/automotive" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/products/automotive"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Nội thất ô tô
                 </Link>
               </li>
               <li>
-                <Link href="/products/furniture" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/products/furniture"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Nội thất sofa
                 </Link>
               </li>
               <li>
-                <Link href="/products/bags" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/products/bags"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Cặp túi, balo, vali
                 </Link>
               </li>
               <li>
-                <Link href="/products/shoes" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/products/shoes"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Giày dép
                 </Link>
               </li>
               <li>
-                <Link href="/products/materials" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/products/materials"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Nguyên phụ liệu
                 </Link>
               </li>
@@ -62,24 +86,36 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">Dịch vụ</h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/services/manufacturing" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/services/manufacturing"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Gia công bồi dán
                 </Link>
               </li>
               <li>
-                <Link href="/services/sewing" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/services/sewing"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Xưởng may
                 </Link>
               </li>
               <li>
-                <Link href="/services/custom" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/services/custom"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Đặt hàng theo yêu cầu
                 </Link>
               </li>
               <li>
-                <Link href="/services/wholesale" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/services/wholesale"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   Bán sỉ
                 </Link>
               </li>
@@ -87,7 +123,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">Liên hệ</h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mr-2 mt-0.5" />
                 <span className="text-gray-300">
@@ -98,13 +134,16 @@ export default function Footer() {
               </li>
               <li className="flex">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0 mr-2" />
-                <a href="tel:0911219966" className="text-gray-300 hover:text-white">
+                <a href="tel:0911219966" className="text-gray-300 transition-colors hover:text-white hover:underline">
                   091.121.9966
                 </a>
               </li>
               <li className="flex">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0 mr-2" />
-                <a href="mailto:royallotusjsc@gmail.com" className="text-gray-300 hover:text-white">
+                <a
+                  href="mailto:royallotusjsc@gmail.com"
+                  className="text-gray-300 transition-colors hover:text-white hover:underline"
+                >
                   royallotusjsc@gmail.com
                 </a>
               </li>
