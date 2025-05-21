@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Royal Lotus - Nhà cung cấp giả da công nghiệp hàng đầu",
   description:
-    "Cung cấp sỉ lẻ các loại giả da công nghiệp, nguyên phụ liệu cho ngành nội thất ô tô, xe máy, sofa và nội thất trong nhà, giày dép, cặp túi balo vali.",
+    "Royal Lotus: Chuyên sỉ lẻ giả da công nghiệp, nguyên phụ liệu nội thất ô tô, sofa, giày dép, túi xách. Chất lượng hàng đầu, giá cạnh tranh.",
 }
 
 export default function RootLayout({
