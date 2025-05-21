@@ -49,7 +49,7 @@ export default function Header() {
             <span className="sr-only">Royal Lotus</span>
             <div className="relative h-12 w-40 sm:h-14 sm:w-48">
               <Image
-                src="/images/royal-lotus-logo.png"
+                src="/images/logo.png"
                 alt="Royal Lotus Logo"
                 fill
                 className="object-contain"
@@ -80,7 +80,7 @@ export default function Header() {
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">Royal Lotus</span>
                   <div className="relative h-10 w-32">
-                    <Image src="/images/royal-lotus-logo.png" alt="Royal Lotus Logo" fill className="object-contain" />
+                    <Image src="/images/logo.png" alt="Royal Lotus Logo" fill className="object-contain" />
                   </div>
                 </Link>
                 <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>

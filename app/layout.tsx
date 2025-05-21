@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "Royal Lotus - Nhà cung cấp giả da công nghiệp hàng đầu",
   description:
     "Royal Lotus: Chuyên sỉ lẻ giả da công nghiệp, nguyên phụ liệu nội thất ô tô, sofa, giày dép, túi xách. Chất lượng hàng đầu, giá cạnh tranh.",
+  icons: {
+    icon: "/images/royal.ico",
+    // Możesz również dodać inne typy ikon, np. dla Apple:
+    // apple: "/images/apple-icon.png", 
+  },
 }
 
 export default function RootLayout({
