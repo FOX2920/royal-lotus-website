@@ -7,12 +7,14 @@ import HeroCarousel from "@/components/hero-carousel"
 import TestimonialsSection from "@/components/testimonials-section"
 import StatsSection from "@/components/stats-section"
 import FAQSection from "@/components/faq-section"
+import AboutRoyalLotusSection from "@/components/AboutRoyalLotusSection"
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Carousel Section */}
       <HeroCarousel />
+      <AboutRoyalLotusSection />
 
       {/* Stats Section */}
       <StatsSection />

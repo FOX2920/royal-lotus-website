@@ -1,77 +1,110 @@
 # Royal Lotus Website
 
-Trang web chính thức của Royal Lotus.
+Website chính thức của ROYAL LOTUS – Đam mê từng tấm da công nghiệp, nơi hội tụ chất lượng, uy tín và dịch vụ tận tâm.
 
-## Công nghệ sử dụng
+## 🌟 Giới thiệu
 
-- **Framework**: [Next.js](https://nextjs.org/) 15.2.4
-- **Ngôn ngữ**: [TypeScript](https://www.typescriptlang.org/)
-- **UI**:
-  - [React](https://reactjs.org/) 19
-  - [Tailwind CSS](https://tailwindcss.com/)
-  - [Shadcn/ui](https://ui.shadcn.com/) (dựa trên Radix UI)
-  - [Lucide React](https://lucide.dev/) (Icons)
-- **Quản lý Form**: [React Hook Form](https://react-hook-form.com/)
-- **Validation**: [Zod](https://zod.dev/)
-- **Styling**: PostCSS, Tailwind CSS Animate
-- **Linting/Formatting**: (Mặc định của Next.js, có thể là ESLint, Prettier)
+**ROYAL LOTUS** là nơi tụi ta đam mê từng tấm da PVC, simili, da microfiber, da công nghiệp – không chỉ là nguyên liệu, mà là chất liệu tạo nên sản phẩm đẹp và bền bỉ.
 
-## Cấu trúc thư mục chính
+- Cung cấp các loại da công nghiệp chất lượng cao, nhiều mẫu mã đẹp mắt
+- Nhập khẩu chính ngạch, rõ ràng nguồn gốc, uy tín lâu năm
+- Giao hàng nhanh, tư vấn tận tâm, hỗ trợ cả sỉ và lẻ
+- Cung cấp sỉ lẻ các loại giả da công nghiệp, nguyên phụ liệu NỘI THẤT ô tô, xe máy, SOFA, nội thất trong nhà, GIÀY DÉP, CẶP TÚI, balo vali
+- Có xưởng gia công bồi dán mút, eva, và xưởng may tại Hà Nội
+
+## 🚀 Tính năng nổi bật
+
+- **Giao diện hiện đại**: Hero Carousel, Stats, Testimonials, FAQ, CTA, hiệu ứng động, responsive, mobile-first
+- **Trang sản phẩm**: Gallery, quick view, tìm kiếm nâng cao
+- **Trang dịch vụ**: Quy trình sản xuất, dịch vụ gia công, xưởng may
+- **Báo giá trực tuyến**: Form báo giá chi tiết, benefits, contact info
+- **Liên hệ đa kênh**: Floating contact (gọi, chat, callback), popup thông báo
+- **SEO & Hiệu suất**: Tối ưu SEO, tốc độ tải trang, PWA-ready
+
+## 🗂️ Cấu trúc thư mục
 
 ```
-.
-├── app/                      # Routes của ứng dụng (App Router)
-│   ├── (pages)/              # Các thư mục con cho từng trang (ví dụ: products, services, about, contact)
-│   ├── api/                  # API routes
-│   ├── layout.tsx            # Layout chính của ứng dụng
-│   ├── page.tsx              # Trang chủ
-│   └── globals.css           # Styles global
-├── components/               # Các React components tái sử dụng
-│   ├── ui/                   # Các UI components nhỏ (có thể từ shadcn/ui)
-│   ├── header.tsx            # Header của trang web
-│   ├── footer.tsx            # Footer của trang web
-│   └── ...                   # Các components khác
-├── lib/                      # Các utility functions, helpers
-│   └── utils.ts
-├── public/                   # Chứa các tài sản tĩnh (hình ảnh, fonts, ...)
-├── styles/                   # (Có thể chứa thêm các file CSS/SCSS tùy chỉnh)
-├── hooks/                    # (Có thể chứa các custom React hooks)
-├── next.config.mjs           # Cấu hình Next.js
-├── package.json              # Quản lý dependencies và scripts
-├── tailwind.config.ts        # Cấu hình Tailwind CSS
-└── tsconfig.json             # Cấu hình TypeScript
+├── app/                # App Router: page, layout, các route chính
+│   ├── about/          # Trang giới thiệu
+│   ├── products/       # Trang sản phẩm
+│   ├── services/       # Trang dịch vụ
+│   ├── quote/          # Trang báo giá
+│   ├── contact/        # Trang liên hệ
+│   └── api/            # API routes
+├── components/         # Các component tái sử dụng
+│   ├── hero-carousel.tsx
+│   ├── stats-section.tsx
+│   ├── testimonials-section.tsx
+│   ├── faq-section.tsx
+│   ├── quote-request-form.tsx
+│   ├── floating-contact.tsx
+│   ├── AboutRoyalLotusSection.tsx
+│   └── ...
+│   └── ui/             # UI primitives (shadcn/ui, radix)
+├── public/             # Hình ảnh, tài sản tĩnh
+├── styles/             # CSS, Tailwind config
+├── lib/, hooks/        # Helpers, custom hooks
+├── package.json        # Scripts, dependencies
+└── ...
 ```
 
-## Khởi chạy dự án
+## 🖥️ Các trang chính
 
-1.  **Cài đặt dependencies:**
+- `/` – Trang chủ: Hero, giới thiệu, stats, testimonials, FAQ, CTA
+- `/about` – Về Royal Lotus: Lịch sử, sứ mệnh, giá trị, cơ sở vật chất
+- `/products` – Sản phẩm: Danh mục, gallery, tìm kiếm, quick view
+- `/services` – Dịch vụ: Gia công, xưởng may, quy trình sản xuất
+- `/quote` – Báo giá: Form báo giá trực tuyến, thông tin liên hệ
+- `/contact` – Liên hệ: Form, bản đồ, hotline, email
 
-    ```bash
-    npm install
-    # hoặc
-    yarn install
-    # hoặc
-    pnpm install
-    ```
+## 🛠️ Công nghệ sử dụng
 
-2.  **Chạy development server:**
-    ```bash
-    npm run dev
-    # hoặc
-    yarn dev
-    # hoặc
-    pnpm dev
-    ```
-    Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt để xem trang web.
+- **Next.js 15.2.4** – App Router, SSR, SEO
+- **React 19** – UI Components
+- **TypeScript** – Kiểu tĩnh, an toàn
+- **Tailwind CSS** – Utility-first CSS, responsive
+- **shadcn/ui + Radix UI** – UI primitives, dialog, sheet, menu, v.v.
+- **Lucide React** – Icon hiện đại
+- **React Hook Form + Zod** – Quản lý form, validation
+- **embla-carousel-react** – Carousel động
+- **Sonner** – Toast notification
+- **PWA ready** – Mobile-first, tối ưu hiệu suất
 
-## Scripts
+## ⚡ Hướng dẫn khởi chạy
 
-- `dev`: Chạy development server.
-- `build`: Build dự án cho production.
-- `start`: Chạy production server (sau khi đã build).
-- `lint`: Chạy linter (ESLint).
+1. **Cài đặt dependencies:**
+   ```bash
+   pnpm install
+   # hoặc npm install / yarn install
+   ```
+2. **Chạy development server:**
 
-## Thông tin thêm
+   ```bash
+   pnpm dev
+   # hoặc npm run dev / yarn dev
+   ```
 
-- Dự án bỏ qua lỗi ESLint và TypeScript trong quá trình build (cấu hình trong `next.config.mjs`).
-- Hình ảnh không được tối ưu hóa qua Next.js Image Optimization (cấu hình trong `next.config.mjs`).
+   Truy cập [http://localhost:3000](http://localhost:3000)
+
+3. **Build production:**
+   ```bash
+   pnpm build && pnpm start
+   # hoặc npm run build && npm start
+   ```
+
+## 📦 Scripts
+
+- `dev`: Chạy development server
+- `build`: Build production
+- `start`: Chạy production server
+- `lint`: Chạy linter (ESLint)
+
+## 📞 Liên hệ
+
+- **Hotline:** 091.121.9966
+- **Email:** royallotusjsc@gmail.com
+- **Địa chỉ:** 42, ngõ 87 Tân Xuân, Xuân Đỉnh, Bắc Từ Liêm, Hà Nội
+
+---
+
+> Website phát triển bởi ROYAL LOTUS. Đam mê từng tấm da – Chất lượng tạo nên uy tín!

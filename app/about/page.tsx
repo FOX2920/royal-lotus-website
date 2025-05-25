@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { CheckCircle, Users, Award, Factory } from "lucide-react"
+import AboutRoyalLotusSection from "@/components/AboutRoyalLotusSection"
 
 export default function AboutPage() {
   return (
@@ -13,6 +14,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+      <AboutRoyalLotusSection />
 
       {/* Company Overview */}
       <section className="py-16">
