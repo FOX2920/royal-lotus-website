@@ -58,7 +58,7 @@ export default function PopupAnnouncement({
 
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
           <div
-            className="h-full bg-primary transition-all duration-[5000ms] ease-linear"
+            className="h-full bg-primary transition-all duration-&lsqb;5000ms&rsqb; ease-linear"
             style={{
               width: "100%",
               animationName: "countdown",
