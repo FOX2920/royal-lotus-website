@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { CheckCircle, Users, Award, Factory } from "lucide-react"
 import AboutRoyalLotusSection from "@/components/AboutRoyalLotusSection"
+import GallerySection from "@/components/gallery-section"
 
 export default function AboutPage() {
   return (
@@ -55,8 +56,13 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="mt-10 lg:mt-0">
-              <div className="relative h-96 rounded-lg overflow-hidden">
-                <Image src="/images/leather-materials.png" alt="Kho nguyên liệu" fill className="object-cover" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image src="/images/showroom-1.jpg" alt="Phòng hàng mẫu Royal Lotus" fill className="object-cover" />
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image src="/images/research-development.jpg" alt="Phòng nghiên cứu và phát triển sản phẩm" fill className="object-cover" />
+                </div>
               </div>
             </div>
           </div>
@@ -178,6 +184,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <GallerySection />
     </div>
   )
 }

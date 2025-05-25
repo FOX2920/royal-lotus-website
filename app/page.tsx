@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/testimonials-section"
 import StatsSection from "@/components/stats-section"
 import FAQSection from "@/components/faq-section"
 import AboutRoyalLotusSection from "@/components/AboutRoyalLotusSection"
+import GallerySection from "@/components/gallery-section"
 
 export default function Home() {
   return (
@@ -85,12 +86,12 @@ export default function Home() {
             {/* Product 3 */}
             <Card className="overflow-hidden transition-all duration-300 product-card group">
               <div className="relative h-64 w-full overflow-hidden">
-                <Image src="/images/handbags.png" alt="Cặp túi, balo, vali" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                <Image src="/images/school-bags.jpg" alt="Cặp sách, túi xách" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900">Cặp túi, balo, vali</h3>
-                <p className="mt-2 text-sm text-gray-600">Giả da đa dạng màu sắc cho túi xách và vali</p>
+                <h3 className="text-lg font-semibold text-gray-900">Cặp sách, túi xách</h3>
+                <p className="mt-2 text-sm text-gray-600">Giả da chất lượng cao cho cặp sách, túi xách và phụ kiện</p>
                 <div className="mt-3 flex items-center">
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) => (
@@ -240,6 +241,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
