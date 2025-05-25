@@ -13,6 +13,7 @@ const navigation = [
   { name: "Sản phẩm", href: "/products" },
   { name: "Dịch vụ", href: "/services" },
   { name: "Về chúng tôi", href: "/about" },
+  { name: "Báo giá", href: "/quote" },
   { name: "Liên hệ", href: "/contact" },
 ]
 
