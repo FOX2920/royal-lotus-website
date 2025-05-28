@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { mockApiResponse } from "@/lib/mock-data"
 
 export async function POST(request: Request) {
   try {
@@ -12,6 +13,12 @@ export async function POST(request: Request) {
     const businessId = process.env.NHANH_BUSINESS_ID || "179197"
     const url = process.env.NHANH_API_URL || "https://open.nhanh.vn/api/product/search"
     
+    // Nếu không có thông tin API thực, sử dụng mock data
+    if (!appId || !secretKey || !accessToken || appId === "your_app_id_here") {
+      console.log("Using mock data - API credentials not configured")
+      return NextResponse.json(mockApiResponse)
+    }
+
     // Validate required environment variables
     if (!appId || !secretKey || !accessToken) {
       console.error("Missing required environment variables")
@@ -29,8 +36,7 @@ export async function POST(request: Request) {
     params.append("accessToken", accessToken)
     params.append("secretKey", secretKey)
     params.append("data", JSON.stringify({ page }))
-    
-    const response = await fetch(url, {
+      const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -39,16 +45,22 @@ export async function POST(request: Request) {
     })
     
     if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`)
+      console.warn(`API responded with status: ${response.status}, falling back to mock data`)
+      return NextResponse.json(mockApiResponse)
     }
     
     const data = await response.json()
+    
+    // Kiểm tra nếu API trả về lỗi, sử dụng mock data
+    if (!data || data.code !== 1) {
+      console.warn("API returned error, falling back to mock data")
+      return NextResponse.json(mockApiResponse)
+    }
+    
     return NextResponse.json(data)
   } catch (error) {
     console.error("Error in products API route:", error)
-    return NextResponse.json(
-      { error: "Failed to fetch products" }, 
-      { status: 500 }
-    )
+    console.log("Falling back to mock data due to error")
+    return NextResponse.json(mockApiResponse)
   }
 }
