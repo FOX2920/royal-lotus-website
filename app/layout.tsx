@@ -7,6 +7,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import FloatingContact from "@/components/floating-contact"
 import PopupProvider from "@/components/popup-provider"
+import Chatbot from "@/components/chatbot"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,9 +29,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <main className="flex-1">{children}</main>            <Footer />
             <FloatingContact />
+            <Chatbot />
             <PopupProvider />
           </div>
         </ThemeProvider>
