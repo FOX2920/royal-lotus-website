@@ -52,13 +52,13 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <span className="text-sm font-semibold text-gray-800">Cao cấp</span>
-                </div>
+              </div>
                 <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="flex items-center text-white">
                     <div className="flex text-yellow-400 mr-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
                     </div>
                     <span className="text-sm font-medium">(4.9)</span>
                   </div>
@@ -73,14 +73,14 @@ export default function Home() {
                   <div className="flex items-center text-sm text-gray-500">
                     <Shield className="w-4 h-4 mr-1" />
                     Bảo hành 2 năm
-                  </div>
-                  <Link
-                    href="/products/automotive"
+                </div>
+                <Link
+                  href="/products/automotive"
                     className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors group/link"
-                  >
+                >
                     Xem thêm 
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                </Link>
                 </div>
               </CardContent>
             </Card>
@@ -97,13 +97,13 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <span className="text-sm font-semibold text-gray-800">Bán chạy</span>
-                </div>
+              </div>
                 <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="flex items-center text-white">
                     <div className="flex text-yellow-400 mr-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
                     </div>
                     <span className="text-sm font-medium">(4.8)</span>
                   </div>
@@ -118,14 +118,14 @@ export default function Home() {
                   <div className="flex items-center text-sm text-gray-500">
                     <Heart className="w-4 h-4 mr-1" />
                     Thân thiện môi trường
-                  </div>
-                  <Link
-                    href="/products/furniture"
+                </div>
+                <Link
+                  href="/products/furniture"
                     className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors group/link"
-                  >
+                >
                     Xem thêm 
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                </Link>
                 </div>
               </CardContent>
             </Card>
@@ -142,13 +142,13 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <span className="text-sm font-semibold text-gray-800">Thời trang</span>
-                </div>
+              </div>
                 <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="flex items-center text-white">
                     <div className="flex text-yellow-400 mr-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
                     </div>
                     <span className="text-sm font-medium">(4.7)</span>
                   </div>
@@ -163,14 +163,14 @@ export default function Home() {
                   <div className="flex items-center text-sm text-gray-500">
                     <Zap className="w-4 h-4 mr-1" />
                     Chống trầy xước
-                  </div>
-                  <Link
-                    href="/products/bags"
+                </div>
+                <Link
+                  href="/products/bags"
                     className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors group/link"
-                  >
+                >
                     Xem thêm 
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                </Link>
                 </div>
               </CardContent>
             </Card>
@@ -187,13 +187,13 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <span className="text-sm font-semibold text-gray-800">Chuyên nghiệp</span>
-                </div>
+              </div>
                 <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="flex items-center text-white">
                     <div className="flex text-yellow-400 mr-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
                     </div>
                     <span className="text-sm font-medium">(4.9)</span>
                   </div>
@@ -208,14 +208,14 @@ export default function Home() {
                   <div className="flex items-center text-sm text-gray-500">
                     <Globe className="w-4 h-4 mr-1" />
                     Xuất khẩu quốc tế
-                  </div>
-                  <Link
-                    href="/products/shoes"
+                </div>
+                <Link
+                  href="/products/shoes"
                     className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors group/link"
-                  >
+                >
                     Xem thêm 
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                </Link>
                 </div>
               </CardContent>
             </Card>
