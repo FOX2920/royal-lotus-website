@@ -17,6 +17,7 @@ export default function PopupAnnouncement({
   duration = 10000, // Mặc định 10 giây
 }: PopupAnnouncementProps) {
   const [isVisible, setIsVisible] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     // Hiển thị popup sau khi component được mount
@@ -39,9 +40,8 @@ export default function PopupAnnouncement({
   // Nếu không hiển thị, không render gì cả
   if (!isVisible) return null
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md animate-fade-in p-4">
-      <div className="relative max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden animate-popup-bounce-in">
+  return (    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md animate-fade-in p-4">
+      <div className="relative max-w-3xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden animate-popup-bounce-in max-h-[90vh] overflow-y-auto">{/* Thêm max-height và overflow để tránh popup quá to */}
         {/* Header với hiệu ứng gradient */}
         <div className="relative bg-gradient-to-r from-primary via-primary/90 to-primary/80 p-6 text-white">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/royal-lotus-banner.png')] opacity-10 bg-cover bg-center"></div>
@@ -65,28 +65,37 @@ export default function PopupAnnouncement({
               <X className="h-6 w-6" />
             </Button>
           </div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row">
+        </div>        <div className="flex flex-col lg:flex-row">
           {/* Phần hình ảnh */}
-          <div className="lg:w-1/2 relative">
-            <div className="relative aspect-[4/3] lg:aspect-[3/4] w-full">
-              <Image 
-                src={imageUrl || "/images/royal-lotus-banner.png"} 
-                alt={altText} 
-                fill 
-                className="object-cover hover:scale-105 transition-transform duration-700" 
-                priority 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          <div className="lg:w-1/2 relative">            <div className="relative h-64 lg:h-96 w-full overflow-hidden rounded-lg bg-gray-100">
+              {!imageError ? (
+                <Image 
+                  src={imageUrl || "/images/royal-lotus-banner.png"} 
+                  alt={altText} 
+                  fill 
+                  className="object-contain hover:scale-105 transition-transform duration-700" 
+                  priority 
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full bg-gradient-to-br from-primary/20 to-primary/10">
+                  <div className="text-center">
+                    <Gift className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-primary">Royal Lotus</h3>
+                    <p className="text-gray-600">Chuyên gia nguyên liệu da</p>
+                  </div>
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
             </div>
             {/* Badge khuyến mãi */}
-            <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg animate-pulse">
+            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm shadow-lg animate-pulse">
               -30%
             </div>
             {/* Sparkle effects */}
-            <div className="absolute top-8 right-8 text-yellow-400 animate-sparkle">✨</div>
-            <div className="absolute bottom-16 left-8 text-yellow-400 animate-sparkle" style={{animationDelay: '1s'}}>⭐</div>
+            <div className="absolute top-6 right-6 text-yellow-400 animate-sparkle text-lg">✨</div>
+            <div className="absolute bottom-12 left-6 text-yellow-400 animate-sparkle text-lg" style={{animationDelay: '1s'}}>⭐</div>
           </div>
 
           {/* Phần nội dung */}
