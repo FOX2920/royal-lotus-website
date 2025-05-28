@@ -180,22 +180,34 @@ export default function Header() {
         {/* Desktop navigation */}
         <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => (
-            <div key={item.name} className="relative group">
-              {item.submenu ? (
+            <div key={item.name} className="relative group">              {item.submenu ? (
                 <div>
-                  <button
-                    onClick={(e) => handleDropdownToggle(item.name, e)}
-                    className={`flex items-center text-sm font-semibold leading-6 transition-colors duration-300 ${
-                      pathname.startsWith(item.href) ? "text-primary" : "text-foreground hover:text-primary"
-                    }`}
-                  >
-                    {item.name}
-                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${
-                      activeDropdown === item.name ? "rotate-180" : ""
-                    }`} />
-                  </button>
-                  {activeDropdown === item.name && (
+                  <div className="flex items-center">
+                    <Link
+                      href={item.href}
+                      className={`text-sm font-semibold leading-6 transition-colors duration-300 ${
+                        pathname.startsWith(item.href) ? "text-primary" : "text-foreground hover:text-primary"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                    <button
+                      onClick={(e) => handleDropdownToggle(item.name, e)}
+                      className="ml-1 p-1 hover:bg-gray-100 rounded transition-colors duration-300"
+                    >
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${
+                        activeDropdown === item.name ? "rotate-180" : ""
+                      } ${pathname.startsWith(item.href) ? "text-primary" : "text-gray-600"}`} />
+                    </button>
+                  </div>                  {activeDropdown === item.name && (
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                      <Link
+                        href={item.href}
+                        className="block px-4 py-3 text-sm font-medium text-primary hover:bg-primary/10 transition-colors duration-300 border-b border-gray-100"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        Xem tất cả {item.name.toLowerCase()}
+                      </Link>
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.name}
