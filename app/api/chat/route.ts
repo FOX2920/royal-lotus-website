@@ -1,17 +1,16 @@
-import { GoogleGenerativeAI } from "@google/generative-ai"
 import { NextRequest, NextResponse } from "next/server"
+import { GoogleGenerativeAI } from "@google/generative-ai"
 
-// Initialize the API
 const genAI = new GoogleGenerativeAI("AIzaSyCUVfl2vrmBOjKyhoJfT0aiziqWkdfuSt0")
 
 export async function POST(request: NextRequest) {
   try {
     const { message, conversationHistory } = await request.json()
-    
+
     // Get the generative model
     const model = genAI.getGenerativeModel({ model: "gemma-3n-e4b-it" })
 
-    // Create a context-aware prompt for Royal Lotus business
+    // Cập nhật prompt chi tiết hơn
     const systemPrompt = `Bạn là **Royal Lotus AI Assistant** 🤖 - trợ lý thông minh của công ty Royal Lotus, chuyên gia hàng đầu về giả da công nghiệp tại Việt Nam.
 
 ## 🏢 THÔNG TIN CÔNG TY ROYAL LOTUS:
@@ -80,12 +79,12 @@ export async function POST(request: NextRequest) {
 1. **Chào hỏi** thân thiện (nếu cần)
 2. **Trả lời trực tiếp** câu hỏi (1-2 câu chính)
 3. **Thông tin bổ sung** hữu ích (nếu có)
-4. **Call-to-action** phù hợp (liên hệ, xem sản phẩm...)
+4. **Call-to-action** phù hợp (liên hệ, xem sản phẩm…)
 
 ### 🎨 **MARKDOWN FORMATTING**:
 - **Bold** cho thông tin quan trọng
 - *Italic* cho nhấn mạnh nhẹ
-- `Code` cho tên sản phẩm cụ thể
+- \`Code\` cho tên sản phẩm cụ thể
 - • Bullet points cho danh sách
 - 📞 Emoji để làm nổi bật
 
@@ -104,13 +103,13 @@ export async function POST(request: NextRequest) {
 
     // Build conversation context
     let conversationContext = systemPrompt + "\n\n"
-    
+
     if (conversationHistory && conversationHistory.length > 0) {
       conversationHistory.forEach((msg: any) => {
         conversationContext += `${msg.role === 'user' ? 'Khách hàng' : 'Trợ lý'}: ${msg.content}\n`
       })
     }
-    
+
     conversationContext += `Khách hàng: ${message}\nTrợ lý:`
 
     // Generate response
@@ -122,7 +121,6 @@ export async function POST(request: NextRequest) {
       message: text,
       success: true 
     })
-
   } catch (error) {
     console.error("Chat API Error:", error)
     return NextResponse.json(
