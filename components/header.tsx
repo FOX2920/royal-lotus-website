@@ -29,8 +29,8 @@ const navigation = [
       { name: "Đặt hàng theo yêu cầu", href: "/services/custom" },
     ]
   },
-  { name: "Về chúng tôi", href: "/about" },
   { name: "Báo giá", href: "/quote" },
+  { name: "Về chúng tôi", href: "/about" },
   { name: "Liên hệ", href: "/contact" },
 ]
 
@@ -164,12 +164,6 @@ export default function Header() {
                       <Phone className="mr-2 h-4 w-4" />
                       Liên hệ ngay
                     </Link>
-                    <div className="mt-4 flex items-center justify-center">
-                      <a href="tel:0911219966" className="flex items-center text-primary hover:text-primary/80 transition-colors duration-300">
-                        <Phone className="mr-2 h-4 w-4" />
-                        <span className="font-medium">091.121.9966</span>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -243,14 +237,7 @@ export default function Header() {
         </div>
 
         {/* Desktop contact button */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center">
-          <a 
-            href="tel:0911219966" 
-            className="flex items-center text-primary hover:text-primary/80 transition-colors duration-300 group"
-          >
-            <Phone className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-medium">091.121.9966</span>
-          </a>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Button asChild className="bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300">
             <Link href="/contact" className="inline-flex items-center">
               <Phone className="mr-2 h-4 w-4" />
