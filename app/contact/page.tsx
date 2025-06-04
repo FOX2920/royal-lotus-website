@@ -115,7 +115,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -197,7 +197,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <Button 
-                      type="submit" 
+                      onClick={handleSubmit}
+                      type="button" 
                       className="w-full h-12 bg-primary hover:bg-primary/90 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300" 
                       disabled={isSubmitting}
                     >
@@ -237,8 +238,34 @@ export default function ContactPage() {
                     Bằng cách gửi form này, bạn đồng ý với 
                     <a href="/privacy" className="text-primary hover:underline ml-1">chính sách bảo mật</a> của chúng tôi.
                   </p>
-                </form>
+                </div>
               )}
+
+              {/* Map Section - Moved here below the form */}
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <div className="mb-6">
+                  <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Vị trí địa lý
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Tìm đường đến chúng tôi</h3>
+                  <p className="text-gray-600">
+                    Văn phòng của chúng tôi được đặt tại vị trí thuận lợi, dễ dàng di chuyển từ mọi nơi trong Hà Nội
+                  </p>
+                </div>
+                <div className="h-64 w-full rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.4737883168486!2d105.78880807596354!3d21.050473987227377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab32dd484c53%3A0x4c8fe625a61abb8a!2zNDIgTmfDtSA4NyBUw6JuIFh1w6JuLCBYdcOibiBEw6xuaCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1683881234567!5m2!1svi!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Bản đồ văn phòng Royal Lotus"
+                  ></iframe>
+                </div>
+              </div>
             </div>
 
             {/* Contact Info - Enhanced */}
@@ -386,34 +413,6 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section - Enhanced */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-              <MapPin className="w-4 h-4 mr-2" />
-              Vị trí địa lý
-            </div>
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 mb-6">Tìm đường đến chúng tôi</h2>
-            <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
-              Văn phòng và nhà xưởng của chúng tôi được đặt tại vị trí thuận lợi, dễ dàng di chuyển từ mọi nơi trong Hà Nội
-            </p>
-          </div>
-          <div className="h-96 w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.4737883168486!2d105.78880807596354!3d21.050473987227377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab32dd484c53%3A0x4c8fe625a61abb8a!2zNDIgTmfDtSA4NyBUw6JuIFh1w6JuLCBYdcOibiBEw6xuaCwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1683881234567!5m2!1svi!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Bản đồ văn phòng Royal Lotus"
-            ></iframe>
           </div>
         </div>
       </section>
