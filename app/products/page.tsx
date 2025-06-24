@@ -10,10 +10,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowRight, Search, ArrowUpDown, ChevronLeft, ChevronRight, Filter } from "lucide-react"
+import { ArrowRight, Search, ArrowUpDown, ChevronLeft, ChevronRight, Filter, Calculator } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { format } from "date-fns"
 import { vi } from "date-fns/locale"
+import QuickQuoteModal from "@/components/quick-quote-modal"
 
 const categories = [
   {
@@ -347,6 +348,9 @@ export default function ProductsPage() {
                         <ArrowUpDown className="ml-2 h-4 w-4" />
                       </Button>
                     </TableHead>
+                    <TableHead className="w-[120px] text-center">
+                      Thao tác
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -370,6 +374,9 @@ export default function ProductsPage() {
                         </TableCell>
                         <TableCell>
                           <Skeleton className="h-6 w-16" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton className="h-8 w-20" />
                         </TableCell>
                       </TableRow>
                     ))
@@ -405,11 +412,23 @@ export default function ProductsPage() {
                         </TableCell>
                         <TableCell className="text-right">{product.inventory?.remain || 0}</TableCell>
                         <TableCell className="text-right">{product.inventory?.available || 0}</TableCell>
+                        <TableCell className="text-center">
+                          <QuickQuoteModal
+                            productName={product.name}
+                            productId={product.idNhanh}
+                            trigger={
+                              <Button variant="outline" size="sm" className="text-xs">
+                                <Calculator className="h-3 w-3 mr-1" />
+                                Báo giá
+                              </Button>
+                            }
+                          />
+                        </TableCell>
                       </TableRow>
                     ))
                   ) : (
                     <TableRow>
-                      <TableCell colSpan={6} className="h-24 text-center">
+                      <TableCell colSpan={7} className="h-24 text-center">
                         Không tìm thấy sản phẩm nào
                       </TableCell>
                     </TableRow>
@@ -468,6 +487,24 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      {/* Quick Quote CTA */}
+      <section className="py-12 bg-primary/10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">
+            Cần báo giá cho nhiều sản phẩm?
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Sử dụng form báo giá chi tiết để nhận tư vấn toàn diện
+          </p>
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+            <Link href="/quote">
+              <Calculator className="h-4 w-4 mr-2" />
+              Form báo giá chi tiết
+            </Link>
+          </Button>
+        </div>
+      </section>
+
       {/* Materials Showcase */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -499,30 +536,22 @@ export default function ProductsPage() {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Chất liệu đa dạng</h3>
+                    <h3 className="text-lg font-medium text-gray-900">Họa tiết độc đáo</h3>
                     <p className="mt-2 text-base text-gray-600">
-                      Nhiều loại chất liệu khác nhau, từ giả da PU, PVC đến giả da microfiber cao cấp.
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-8 flex items-center">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                      <span className="text-xl font-bold">100%</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Đảm bảo chất lượng</h3>
-                    <p className="mt-2 text-base text-gray-600">
-                      Tất cả sản phẩm đều được kiểm tra chất lượng nghiêm ngặt trước khi xuất xưởng.
+                      Nhiều họa tiết độc đáo từ da bò, da cừu đến các họa tiết hiện đại, thời trang.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="mt-10 lg:mt-0 animate-slide-up">
-              <div className="relative h-96 rounded-lg overflow-hidden shadow-md image-hover">
-                <Image src="/images/leather-materials.png" alt="Kho nguyên liệu" fill className="object-cover" />
+            <div className="mt-10 lg:mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image src="/images/showroom-1.jpg" alt="Kho nguyên liệu giả da" fill className="object-cover" />
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image src="/images/showroom-2.jpg" alt="Đa dạng màu sắc giả da" fill className="object-cover" />
+                </div>
               </div>
             </div>
           </div>

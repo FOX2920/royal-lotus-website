@@ -62,27 +62,27 @@ export default function QuoteRequestForm() {
   }
 
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/5 to-primary/10">
+    <section className="py-10 md:py-12 bg-gradient-to-br from-primary/5 to-primary/10">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
             Yêu cầu báo giá trực tuyến
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          <p className="mt-3 max-w-2xl mx-auto text-base md:text-lg text-gray-600">
             Điền thông tin dưới đây để nhận báo giá nhanh chóng và chính xác nhất
           </p>
         </div>
 
         <Card className="shadow-lg border-0">
-          <CardHeader className="bg-primary/5 rounded-t-lg">
-            <CardTitle className="flex items-center text-xl">
-              <Calculator className="h-6 w-6 text-primary mr-3" />
+          <CardHeader className="bg-primary/5 rounded-t-lg p-4 md:p-6">
+            <CardTitle className="flex items-center text-lg md:text-xl">
+              <Calculator className="h-5 w-5 md:h-6 md:w-6 text-primary mr-2 md:mr-3" />
               Thông tin yêu cầu báo giá
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <CardContent className="p-4 md:p-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <div>
                   <Label htmlFor="name" className="text-sm font-medium text-gray-700">
                     Họ và tên *
@@ -113,7 +113,7 @@ export default function QuoteRequestForm() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <div>
                   <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
                     Số điện thoại *
@@ -144,7 +144,7 @@ export default function QuoteRequestForm() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 <div>
                   <Label htmlFor="category" className="text-sm font-medium text-gray-700">
                     Loại sản phẩm *
@@ -209,18 +209,18 @@ export default function QuoteRequestForm() {
                 />
               </div>
 
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
-                <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 md:p-5 text-center hover:border-primary/50 transition-colors">
+                <Upload className="h-10 w-10 md:h-12 md:w-12 text-gray-400 mx-auto mb-3" />
                 <p className="text-sm text-gray-600 mb-2">
                   <span className="font-medium">Tải lên hình ảnh mẫu</span> hoặc kéo thả file vào đây
                 </p>
                 <p className="text-xs text-gray-500">PNG, JPG, PDF tối đa 10MB</p>
-                <Button type="button" variant="outline" className="mt-4">
+                <Button type="button" variant="outline" className="mt-3" size="sm">
                   Chọn file
                 </Button>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -246,7 +246,7 @@ export default function QuoteRequestForm() {
           </CardContent>
         </Card>
 
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Bằng cách gửi yêu cầu, bạn đồng ý với{" "}
             <a href="/privacy" className="text-primary hover:underline">
